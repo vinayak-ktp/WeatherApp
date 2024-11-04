@@ -32,7 +32,7 @@ async function updateWeatherInfo(city) {
                 more_info.style.display = "none";
                 weather_description.textContent = "Location Not Found!";
             }
-            throw new Error("network response is not ok");
+            throw new Error("network response not ok!");
         }
         
         const data = await response.json();
@@ -47,12 +47,6 @@ async function updateWeatherInfo(city) {
         weather_description.textContent = data.weather[0].description;
     }
     catch(error) {
-        if(error.name === 'TypeError') {
-            weather_image.src = `./images/no-connection.png`;
-            temperature_display.style.display = "none";
-            more_info.style.display = "none";
-            weather_description.textContent = "No Connection!";
-        }
         console.error(error);
     }
 }
